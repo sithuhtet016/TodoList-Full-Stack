@@ -1,0 +1,30 @@
+<%- include('./partials/header.ejs') %>
+<div class="box" id="heading">
+  <h1><%= ListTitle %></h1>
+</div>
+<div class="box">
+  <% for (let i = 0; i < MyList.length; i++) { %> <% const listItem = MyList[i];
+  %>
+  <form class="item" action="/delete" method="POST">
+    <input
+      type="checkbox"
+      name="checkbox"
+      value="<%= listItem._id %>"
+      onchange="this.form.submit()"
+    />
+    <p><%= listItem.name %></p>
+  </form>
+  <% } %>
+  <form class="btn" action="/" method="post">
+    <input
+      type="text"
+      name="inputList"
+      placeholder="New Item"
+      autocomplete="off"
+      required
+    />
+    <button type="submit" name="list" value="<%= ListTitle %>">+</button>
+  </form>
+</div>
+
+<%- include('./partials/footer.ejs') %>
